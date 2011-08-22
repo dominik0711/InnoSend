@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B436118014028969000BDDFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B436117F14028969000BDDFB /* Cocoa.framework */; };
+		B436118A14028969000BDDFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B436118814028969000BDDFB /* InfoPlist.strings */; };
+		B436118C14028969000BDDFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B436118B14028969000BDDFB /* main.m */; };
+		B436119014028969000BDDFB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B436118E14028969000BDDFB /* Credits.rtf */; };
+		B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119214028969000BDDFB /* InnoSendAppDelegate.m */; };
+		B436119614028969000BDDFB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B436119414028969000BDDFB /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B436117B14028969000BDDFB /* InnoSend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InnoSend.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B436117F14028969000BDDFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B436118214028969000BDDFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		B436118314028969000BDDFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B436118414028969000BDDFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B436118714028969000BDDFB /* InnoSend-Info.plist */ = {isa = PBXFileReference; path = "InnoSend-Info.plist"; sourceTree = "<group>"; };
+		B436118914028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B436118B14028969000BDDFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B436118D14028969000BDDFB /* InnoSend-Prefix.pch */ = {isa = PBXFileReference; path = "InnoSend-Prefix.pch"; sourceTree = "<group>"; };
+		B436118F14028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B436119114028969000BDDFB /* InnoSendAppDelegate.h */ = {isa = PBXFileReference; path = InnoSendAppDelegate.h; sourceTree = "<group>"; };
+		B436119214028969000BDDFB /* InnoSendAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InnoSendAppDelegate.m; sourceTree = "<group>"; };
+		B436119514028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B436117814028969000BDDFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B436118014028969000BDDFB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B436117014028969000BDDFB = {
+			isa = PBXGroup;
+			children = (
+				B436118514028969000BDDFB /* InnoSend */,
+				B436117E14028969000BDDFB /* Frameworks */,
+				B436117C14028969000BDDFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B436117C14028969000BDDFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B436117B14028969000BDDFB /* InnoSend.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B436117E14028969000BDDFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B436117F14028969000BDDFB /* Cocoa.framework */,
+				B436118114028969000BDDFB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B436118114028969000BDDFB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B436118214028969000BDDFB /* AppKit.framework */,
+				B436118314028969000BDDFB /* CoreData.framework */,
+				B436118414028969000BDDFB /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		B436118514028969000BDDFB /* InnoSend */ = {
+			isa = PBXGroup;
+			children = (
+				B436119114028969000BDDFB /* InnoSendAppDelegate.h */,
+				B436119214028969000BDDFB /* InnoSendAppDelegate.m */,
+				B436119414028969000BDDFB /* MainMenu.xib */,
+				B436118614028969000BDDFB /* Supporting Files */,
+			);
+			path = InnoSend;
+			sourceTree = "<group>";
+		};
+		B436118614028969000BDDFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B436118714028969000BDDFB /* InnoSend-Info.plist */,
+				B436118814028969000BDDFB /* InfoPlist.strings */,
+				B436118B14028969000BDDFB /* main.m */,
+				B436118D14028969000BDDFB /* InnoSend-Prefix.pch */,
+				B436118E14028969000BDDFB /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B436117A14028969000BDDFB /* InnoSend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B436119914028969000BDDFB /* Build configuration list for PBXNativeTarget "InnoSend" */;
+			buildPhases = (
+				B436117714028969000BDDFB /* Sources */,
+				B436117814028969000BDDFB /* Frameworks */,
+				B436117914028969000BDDFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InnoSend;
+			productName = InnoSend;
+			productReference = B436117B14028969000BDDFB /* InnoSend.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B436117214028969000BDDFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "flexis AG";
+			};
+			buildConfigurationList = B436117514028969000BDDFB /* Build configuration list for PBXProject "InnoSend" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B436117014028969000BDDFB;
+			productRefGroup = B436117C14028969000BDDFB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B436117A14028969000BDDFB /* InnoSend */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B436117914028969000BDDFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B436118A14028969000BDDFB /* InfoPlist.strings in Resources */,
+				B436119014028969000BDDFB /* Credits.rtf in Resources */,
+				B436119614028969000BDDFB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B436117714028969000BDDFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B436118C14028969000BDDFB /* main.m in Sources */,
+				B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B436118814028969000BDDFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B436118914028969000BDDFB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B436118E14028969000BDDFB /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B436118F14028969000BDDFB /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		B436119414028969000BDDFB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B436119514028969000BDDFB /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B436119714028969000BDDFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B436119814028969000BDDFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B436119A14028969000BDDFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InnoSend/InnoSend-Prefix.pch";
+				INFOPLIST_FILE = "InnoSend/InnoSend-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B436119B14028969000BDDFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InnoSend/InnoSend-Prefix.pch";
+				INFOPLIST_FILE = "InnoSend/InnoSend-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B436117514028969000BDDFB /* Build configuration list for PBXProject "InnoSend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B436119714028969000BDDFB /* Debug */,
+				B436119814028969000BDDFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B436119914028969000BDDFB /* Build configuration list for PBXNativeTarget "InnoSend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B436119A14028969000BDDFB /* Debug */,
+				B436119B14028969000BDDFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B436117214028969000BDDFB /* Project object */;
+}
