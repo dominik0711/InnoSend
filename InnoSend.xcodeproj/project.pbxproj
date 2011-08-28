@@ -13,6 +13,8 @@
 		B436119014028969000BDDFB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B436118E14028969000BDDFB /* Credits.rtf */; };
 		B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119214028969000BDDFB /* InnoSendAppDelegate.m */; };
 		B436119614028969000BDDFB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B436119414028969000BDDFB /* MainMenu.xib */; };
+		B436119E140289F2000BDDFB /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119D140289F2000BDDFB /* AppController.m */; };
+		B43611A2140295AB000BDDFB /* message.icns in Resources */ = {isa = PBXBuildFile; fileRef = B43611A1140295AB000BDDFB /* message.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +23,17 @@
 		B436118214028969000BDDFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B436118314028969000BDDFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B436118414028969000BDDFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B436118714028969000BDDFB /* InnoSend-Info.plist */ = {isa = PBXFileReference; path = "InnoSend-Info.plist"; sourceTree = "<group>"; };
+		B436118714028969000BDDFB /* InnoSend-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InnoSend-Info.plist"; sourceTree = "<group>"; };
 		B436118914028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B436118B14028969000BDDFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B436118D14028969000BDDFB /* InnoSend-Prefix.pch */ = {isa = PBXFileReference; path = "InnoSend-Prefix.pch"; sourceTree = "<group>"; };
+		B436118D14028969000BDDFB /* InnoSend-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InnoSend-Prefix.pch"; sourceTree = "<group>"; };
 		B436118F14028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		B436119114028969000BDDFB /* InnoSendAppDelegate.h */ = {isa = PBXFileReference; path = InnoSendAppDelegate.h; sourceTree = "<group>"; };
+		B436119114028969000BDDFB /* InnoSendAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InnoSendAppDelegate.h; sourceTree = "<group>"; };
 		B436119214028969000BDDFB /* InnoSendAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InnoSendAppDelegate.m; sourceTree = "<group>"; };
 		B436119514028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B436119C140289F2000BDDFB /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		B43611A1140295AB000BDDFB /* message.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = message.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +51,7 @@
 		B436117014028969000BDDFB = {
 			isa = PBXGroup;
 			children = (
+				B43611A1140295AB000BDDFB /* message.icns */,
 				B436118514028969000BDDFB /* InnoSend */,
 				B436117E14028969000BDDFB /* Frameworks */,
 				B436117C14028969000BDDFB /* Products */,
@@ -82,6 +88,8 @@
 		B436118514028969000BDDFB /* InnoSend */ = {
 			isa = PBXGroup;
 			children = (
+				B436119C140289F2000BDDFB /* AppController.h */,
+				B436119D140289F2000BDDFB /* AppController.m */,
 				B436119114028969000BDDFB /* InnoSendAppDelegate.h */,
 				B436119214028969000BDDFB /* InnoSendAppDelegate.m */,
 				B436119414028969000BDDFB /* MainMenu.xib */,
@@ -128,7 +136,7 @@
 		B436117214028969000BDDFB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "flexis AG";
+				ORGANIZATIONNAME = "Die Cubus Unit GmbH";
 			};
 			buildConfigurationList = B436117514028969000BDDFB /* Build configuration list for PBXProject "InnoSend" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -155,6 +163,7 @@
 				B436118A14028969000BDDFB /* InfoPlist.strings in Resources */,
 				B436119014028969000BDDFB /* Credits.rtf in Resources */,
 				B436119614028969000BDDFB /* MainMenu.xib in Resources */,
+				B43611A2140295AB000BDDFB /* message.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +176,7 @@
 			files = (
 				B436118C14028969000BDDFB /* main.m in Sources */,
 				B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */,
+				B436119E140289F2000BDDFB /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +219,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -235,6 +246,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -286,6 +298,7 @@
 				B436119B14028969000BDDFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

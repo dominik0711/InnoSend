@@ -3,7 +3,7 @@
 //  InnoSend
 //
 //  Created by Dominik Kroutvar on 22.08.11.
-//  Copyright 2011 flexis AG. All rights reserved.
+//  Copyright 2011 Die Cubus Unit GmbH. All rights reserved.
 //
 
 #import "InnoSendAppDelegate.h"
