@@ -21,12 +21,7 @@ NSString *const PasswordKey = @"Password";
     alertSheet = [[NSAlert alloc] init];
     [alertSheet addButtonWithTitle:@"OK"];
     [alertSheet setAlertStyle:NSWarningAlertStyle];
-    
-    return self;
-}
 
--(void)initialize
-{
     //Create a dictionary
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
@@ -44,6 +39,14 @@ NSString *const PasswordKey = @"Password";
      registerDefaults:defaultValues];
     
     NSLog(@"registered dafaults: %@", defaultValues);
+    
+    return self;
+}
+
+-(void)windowDidLoad
+{
+    [userField setStringValue:[self userName]];
+    [pwField setStringValue:[self password]];
 }
 
 -(IBAction)sendMessage:(id)sender
@@ -54,7 +57,7 @@ NSString *const PasswordKey = @"Password";
     NSString *address = [addressField stringValue];
     NSString *phoneNumber = [address stringByReplacingOccurrencesOfString:@"+" withString:@"00"];
     NSString *input = [messageField stringValue];
-    NSString *postData = [input stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *postData = [input stringByAddingPercentEscapesUsingEncoding:NSISOLatin1StringEncoding];
     NSUInteger messageLength = [[messageField stringValue] length];
     if (messageLength > 140) {
         type = @"4";
@@ -129,15 +132,18 @@ NSString *const PasswordKey = @"Password";
     [preferenceSheet orderOut:sender];
 }
 
-//- (void)setData:(NSData *)theData encoding:(NSString *)encoding {
-//    // NSURLResponse's encoding is an IANA string. Use CF utilities to convert it to a CFStringEncoding then a NSStringEncoding
-//    NSStringEncoding nsEncoding = NSUTF8StringEncoding; // default to UTF-8
-//    if (encoding) {
-//        CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)encoding);
-//        if (cfEncoding != kCFStringEncodingInvalidId) {
-//            nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
-//        }
-//    }
-//}
+-(NSString *)userName
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *userAsData = [defaults objectForKey:UserNameKey];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:userAsData];
+}
+
+-(NSString *)password
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *passwordAsData = [defaults objectForKey:PasswordKey];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:passwordAsData];
+}
 
 @end
