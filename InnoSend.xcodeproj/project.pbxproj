@@ -48,10 +48,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B436117014028969000BDDFB = {
+		B42038BE140D1AD500166745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				B43611A1140295AB000BDDFB /* message.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B436117014028969000BDDFB = {
+			isa = PBXGroup;
+			children = (
+				B42038BE140D1AD500166745 /* Resources */,
 				B436118514028969000BDDFB /* InnoSend */,
 				B436117E14028969000BDDFB /* Frameworks */,
 				B436117C14028969000BDDFB /* Products */,
