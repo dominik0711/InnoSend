@@ -17,6 +17,7 @@ extern NSString *const PasswordKey;
     IBOutlet NSTextField *addressField;
     IBOutlet NSTextField *messageField;
     IBOutlet NSTextField *textCounter;
+    IBOutlet NSTextField *accountLabel;
     IBOutlet NSButton *sendButton;
     //Preference sheet
     IBOutlet NSWindow *preferenceSheet;
@@ -33,7 +34,5 @@ extern NSString *const PasswordKey;
 -(IBAction)hidePreferenceSheet:(id)sender;
 -(NSString *)userName;
 -(NSString *)password;
-
-//- (void)setData:(NSData *)theData encoding:(NSString *)encoding;
 
 @end

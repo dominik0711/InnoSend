@@ -97,6 +97,8 @@ NSString *const PasswordKey = @"Password";
     NSUInteger count = [[messageField stringValue] length];
     if (phoneCount == 0) {
         [sendButton setEnabled:NO];
+    } else if (phoneCount == 0 || count == 0) {
+        [sendButton setEnabled:NO];
     } else if (count <= 140) {
         [sendButton setTitle:@"Free SMS"];
         [sendButton setEnabled:YES];
@@ -114,7 +116,20 @@ NSString *const PasswordKey = @"Password";
 
 -(IBAction)fetchAccount:(id)sender
 {
-    
+    NSString *user = [userField stringValue];
+    NSString *pw = [pwField stringValue];
+    NSString *urlString = [NSString stringWithFormat:
+                           @"http://www.innosend.de/gateway/konto.php?"
+                           @"id=%@"
+                           @"&pw=%@",
+                           user, pw];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+    NSURLResponse *response;
+    NSError *error;
+    NSData *urlData;
+    urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    accountLabel.stringValue = [NSString stringWithFormat:@"%@", urlData];
 }
 
 -(IBAction)showPreferenceSheet:(id)sender
