@@ -129,7 +129,8 @@ NSString *const PasswordKey = @"Password";
     NSError *error;
     NSData *urlData;
     urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    accountLabel.stringValue = [NSString stringWithFormat:@"%@", urlData];
+    NSLog(@"URLData: %@", urlData);
+    accountLabel.stringValue = [NSString stringWithFormat:@"Aktuelles Guthaben: %@", urlData];
 }
 
 -(IBAction)showPreferenceSheet:(id)sender
