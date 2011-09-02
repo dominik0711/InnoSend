@@ -149,6 +149,8 @@ NSString *const PasswordKey = @"Password";
             break;
             
         default:
+            infoTxt = NSLocalizedString(@"Successfully send message.", @"successfully send") ;
+            image = NSImageNameInfo;
             break;
     }
     [alertSheet setMessageText:NSLocalizedString(@"Message status", @"message status")];
