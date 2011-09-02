@@ -15,7 +15,6 @@
 		B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119214028969000BDDFB /* InnoSendAppDelegate.m */; };
 		B436119614028969000BDDFB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B436119414028969000BDDFB /* MainMenu.xib */; };
 		B436119E140289F2000BDDFB /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119D140289F2000BDDFB /* AppController.m */; };
-		B43611A2140295AB000BDDFB /* message.icns in Resources */ = {isa = PBXBuildFile; fileRef = B43611A1140295AB000BDDFB /* message.icns */; };
 		B4F13DC614117C72005E907E /* sms.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4F13DC514117C72005E907E /* sms.icns */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +38,6 @@
 		B436119514028969000BDDFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B436119C140289F2000BDDFB /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		B43611A1140295AB000BDDFB /* message.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = message.icns; sourceTree = "<group>"; };
 		B4F13DC514117C72005E907E /* sms.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sms.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +58,6 @@
 			children = (
 				B4352BA914115AA200437B25 /* Localizable.strings */,
 				B4F13DC514117C72005E907E /* sms.icns */,
-				B43611A1140295AB000BDDFB /* message.icns */,
 				B436119414028969000BDDFB /* MainMenu.xib */,
 			);
 			name = Resources;
@@ -181,7 +178,6 @@
 				B436118A14028969000BDDFB /* InfoPlist.strings in Resources */,
 				B436119014028969000BDDFB /* Credits.rtf in Resources */,
 				B436119614028969000BDDFB /* MainMenu.xib in Resources */,
-				B43611A2140295AB000BDDFB /* message.icns in Resources */,
 				B4352BAB14115AA200437B25 /* Localizable.strings in Resources */,
 				B4F13DC614117C72005E907E /* sms.icns in Resources */,
 			);
