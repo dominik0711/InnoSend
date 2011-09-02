@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>message.icns</string>
+	<string>sms.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.cubusunit.InnoSend</string>
 	<key>CFBundleInfoDictionaryVersion</key>
