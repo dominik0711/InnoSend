@@ -22,6 +22,7 @@
 		B4352BA71411560900437B25 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B4352BAA14115AA200437B25 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = InnoSend/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4352BAC14115AC200437B25 /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B4352BAD1411628D00437B25 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
 		B436117B14028969000BDDFB /* InnoSend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InnoSend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436117F14028969000BDDFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B436118214028969000BDDFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -219,6 +220,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B436118F14028969000BDDFB /* en */,
+				B4352BAD1411628D00437B25 /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
