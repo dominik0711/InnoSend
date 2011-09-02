@@ -32,6 +32,8 @@ extern NSString *const PasswordKey;
 -(IBAction)fetchAccount:(id)sender;
 -(IBAction)showPreferenceSheet:(id)sender;
 -(IBAction)hidePreferenceSheet:(id)sender;
+-(void)setAccountCredit;
+-(NSString *)accountCredit;
 -(NSString *)userName;
 -(NSString *)password;
 
