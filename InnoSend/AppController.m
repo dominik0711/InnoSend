@@ -68,8 +68,6 @@ NSString *const PasswordKey = @"Password";
         type = @"4";
     }
     
-    NSLog(@"Sending message = %@", postData);
-    
     NSString *urlString = [NSString stringWithFormat:
                            @"https://www.innosend.de/gateway/sms.php?"
                            @"id=%@"
@@ -91,11 +89,11 @@ NSString *const PasswordKey = @"Password";
     switch (retCode) {
         case 100:
             infoTxt = @"Successfully send message.";
-            image = @"NSImageNameInfo";
+            image = NSImageNameInfo;
             break;
         case 111:
             infoTxt = @"IP lock active.";
-            image = @"NSImageNameCaution";
+            image = NSImageNameCaution;
             break;
         case 112:
             infoTxt = @"Wrong user data. Please check your settings in the Preference panel.";
@@ -227,7 +225,6 @@ NSString *const PasswordKey = @"Password";
     NSData *urlData;
     urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *theString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
-    NSLog(@"URLData: %@", theString);
     
     return [NSString stringWithFormat:@"%@", theString];
     
