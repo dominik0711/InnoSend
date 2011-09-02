@@ -88,70 +88,70 @@ NSString *const PasswordKey = @"Password";
     NSString *image;
     switch (retCode) {
         case 100:
-            infoTxt = @"Successfully send message.";
+            infoTxt = NSLocalizedString(@"Successfully send message.", @"successfully send") ;
             image = NSImageNameInfo;
             break;
         case 111:
-            infoTxt = @"IP lock active.";
+            infoTxt = NSLocalizedString(@"IP lock active.", @"IP locked");
             image = NSImageNameCaution;
             break;
         case 112:
-            infoTxt = @"Wrong user data. Please check your settings in the Preference panel.";
+            infoTxt = NSLocalizedString(@"Wrong user data. Please check your settings in the Preference panel.", @"wrong user data");
             image = NSImageNameCaution;
             break;
         case 120:
-            infoTxt = @"Sender data missing.";
+            infoTxt = NSLocalizedString(@"Sender data missing.", @"missing sender");
             image = NSImageNameCaution;
             break;
         case 121:
-            infoTxt = @"Message type is missing.";
+            infoTxt = NSLocalizedString(@"Message type is missing.", @"message type missing");
             image = NSImageNameCaution;
             break;
         case 122:
-            infoTxt = @"Message text is missing.";
+            infoTxt = NSLocalizedString(@"Message text is missing.", @"message itself is missing");
             image = NSImageNameCaution;
             break;
         case 123:
-            infoTxt = @"Receiver number is missing.";
+            infoTxt = NSLocalizedString(@"Receiver number is missing.", @"receicer phone number is missing");
             image = NSImageNameCaution;
             break;
         case 129:
-            infoTxt = @"Wrong sender text. Please do not use special characters or spaces.";
+            infoTxt = NSLocalizedString(@"Wrong sender text. Please do not use special characters or spaces.", @"wrong sender text");
             image = NSImageNameCaution;
             break;
         case 130:
-            infoTxt = @"Phone number locked or advertisement detected.";
+            infoTxt = NSLocalizedString(@"Phone number locked or advertisement detected.", @"phone number locked");
             image = NSImageNameCaution;
             break;
         case 140:
-            infoTxt = @"Credit balance too low. Please top up your account.";
+            infoTxt = NSLocalizedString(@"Credit balance too low. Please top up your account.", @"credit too low");
             image = NSImageNameCaution;
             break;
         case 150:
-            infoTxt = @"Message spammer protection. Please contact the support of innosend.de.";
+            infoTxt = NSLocalizedString(@"Message spammer protection. Please contact the support of innosend.de.", @"spammer info");
             image = NSImageNameCaution;
             break;
         case 170:
-            infoTxt = @"Wrong delivery date. Please correct the date.";
+            infoTxt = NSLocalizedString(@"Wrong delivery date. Please correct the date.", @"wrong delivery date");
             image = NSImageNameCaution;
             break;
         case 171:
-            infoTxt = @"Delivery date is in the past. Please correct the date.";
+            infoTxt = NSLocalizedString(@"Delivery date is in the past. Please correct the date.", @"delivery date is set to past");
             image = NSImageNameCaution;
             break;
         case 172:
-            infoTxt = @"Too many phone numbers added. Please delete some phone numbers.";
+            infoTxt = NSLocalizedString(@"Too many phone numbers added. Please delete some phone numbers.", @"too many phone numbers");
             image = NSImageNameCaution;
             break;
         case 173:
-            infoTxt = @"Phone number format wrong. Please check the format of the phone number.";
+            infoTxt = NSLocalizedString(@"Phone number format wrong. Please check the format of the phone number.", @"phone number format wrong");
             image = NSImageNameCaution;
             break;
             
         default:
             break;
     }
-    [alertSheet setMessageText:@"Message status"];
+    [alertSheet setMessageText:NSLocalizedString(@"Message status", @"message status")];
     [alertSheet setInformativeText:[NSString stringWithFormat:@"%@", infoTxt]];
     [alertSheet setIcon:[NSImage imageNamed:image]];
     [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];            
@@ -168,10 +168,10 @@ NSString *const PasswordKey = @"Password";
     } else if (phoneCount == 0 || count == 0) {
         [sendButton setEnabled:NO];
     } else if (count <= 140) {
-        [sendButton setTitle:@"Free SMS"];
+        [sendButton setTitle:NSLocalizedString(@"Free SMS", @"free sms")];
         [sendButton setEnabled:YES];
     } else {
-        [sendButton setTitle:@"Paid SMS"];
+        [sendButton setTitle:NSLocalizedString(@"Paid SMS", @"paid sms")];
     }
 	textCounter.stringValue = [NSString stringWithFormat:@"%lu/140", count];
     
@@ -205,7 +205,11 @@ NSString *const PasswordKey = @"Password";
 -(void)setAccountCredit
 {
     NSString *accountCredit = [self accountCredit];
-    accountLabel.stringValue = [NSString stringWithFormat:@"Credit: %@", accountCredit];
+    int retCode = [accountCredit intValue];
+    if (retCode == 112) {
+        accountCredit = @"";
+    }
+    accountLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Credit: %@", @"credit"), accountCredit];
 
 }
 
