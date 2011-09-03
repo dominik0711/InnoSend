@@ -156,7 +156,10 @@ NSString *const PasswordKey = @"Password";
     [alertSheet setMessageText:NSLocalizedString(@"Message status", @"message status")];
     [alertSheet setInformativeText:[NSString stringWithFormat:@"%@", infoTxt]];
     [alertSheet setIcon:[NSImage imageNamed:image]];
-    [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];            
+    [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
+    
+    //Refresh account
+//    [self setAccountCredit];
     return;
 }
 
