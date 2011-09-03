@@ -66,7 +66,7 @@ NSString *const SenderKey = @"Sender";
     NSString *type = @"2";
     NSString *user = [userField stringValue];
     NSString *pw = [pwField stringValue];
-    NSString *senderNumber = [senderField stringValue];
+    NSString *senderNo = [senderField stringValue];
     NSString *address = [addressField stringValue];
     NSString *phoneNumber = [[address stringByReplacingOccurrencesOfString:@"+" withString:@"00"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *input = [messageField stringValue];
@@ -74,6 +74,10 @@ NSString *const SenderKey = @"Sender";
     NSUInteger messageLength = [[messageField stringValue] length];
     if (messageLength > 140) {
         type = @"4";
+    }
+    NSString *senderNumber = @"";
+    if ([senderNo length] > 0) {
+        senderNumber = [[senderNumber stringByAppendingString:@"&absender="] stringByAppendingString:senderNo];
     }
     
     NSString *urlString = [NSString stringWithFormat:
@@ -83,7 +87,7 @@ NSString *const SenderKey = @"Sender";
                            @"&text=%@"
                            @"&type=%@"
                            @"&empfaenger=%@"
-                           @"&absender=%@",
+                           @"%@",
                            user, pw, postData, type, phoneNumber, senderNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
