@@ -18,6 +18,7 @@
 			<string>NSButtonCell</string>
 			<string>NSButton</string>
 			<string>NSSecureTextFieldCell</string>
+			<string>NSProgressIndicator</string>
 			<string>NSCustomObject</string>
 			<string>NSSecureTextField</string>
 			<string>NSView</string>
@@ -405,7 +406,7 @@
 						<object class="NSTextField" id="414009612">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{17, 132}, {59, 17}}</string>
+							<string key="NSFrame">{{17, 132}, {75, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="552984459"/>
@@ -495,6 +496,17 @@
 								<int key="NSPeriodicDelay">200</int>
 								<int key="NSPeriodicInterval">25</int>
 							</object>
+						</object>
+						<object class="NSProgressIndicator" id="954009243">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">1289</int>
+							<object class="NSPSMatrix" key="NSDrawMatrix"/>
+							<string key="NSFrame">{{444, 132}, {16, 16}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:3954</string>
+							<int key="NSpiFlags">20746</int>
+							<double key="NSMaxValue">100</double>
 						</object>
 					</object>
 					<string key="NSFrameSize">{480, 201}</string>
@@ -1011,6 +1023,14 @@
 					</object>
 					<int key="connectionID">627</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">progressIndicator</string>
+						<reference key="source" ref="18439955"/>
+						<reference key="destination" ref="954009243"/>
+					</object>
+					<int key="connectionID">629</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1186,6 +1206,7 @@
 							<reference ref="998705112"/>
 							<reference ref="723338383"/>
 							<reference ref="221435943"/>
+							<reference ref="954009243"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -1496,6 +1517,11 @@
 						<reference key="object" ref="428174328"/>
 						<reference key="parent" ref="221435943"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">628</int>
+						<reference key="object" ref="954009243"/>
+						<reference key="parent" ref="439893737"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1573,6 +1599,7 @@
 					<string>617.IBPluginDependency</string>
 					<string>625.IBPluginDependency</string>
 					<string>626.IBPluginDependency</string>
+					<string>628.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -1656,6 +1683,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -1670,7 +1698,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">627</int>
+			<int key="maxID">629</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1683,14 +1711,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>closeApplication:</string>
-							<string>fetchAccount:</string>
 							<string>hidePreferenceSheet:</string>
 							<string>sendMessage:</string>
 							<string>showPreferenceSheet:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1702,7 +1728,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>closeApplication:</string>
-							<string>fetchAccount:</string>
 							<string>hidePreferenceSheet:</string>
 							<string>sendMessage:</string>
 							<string>showPreferenceSheet:</string>
@@ -1711,10 +1736,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">closeApplication:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">fetchAccount:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1740,6 +1761,7 @@
 							<string>mainWindow</string>
 							<string>messageField</string>
 							<string>preferenceSheet</string>
+							<string>progressIndicator</string>
 							<string>pwField</string>
 							<string>sendButton</string>
 							<string>senderField</string>
@@ -1753,6 +1775,7 @@
 							<string>NSWindow</string>
 							<string>NSTextField</string>
 							<string>NSWindow</string>
+							<string>NSProgressIndicator</string>
 							<string>NSTextField</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
@@ -1769,6 +1792,7 @@
 							<string>mainWindow</string>
 							<string>messageField</string>
 							<string>preferenceSheet</string>
+							<string>progressIndicator</string>
 							<string>pwField</string>
 							<string>sendButton</string>
 							<string>senderField</string>
@@ -1796,6 +1820,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">preferenceSheet</string>
 								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">progressIndicator</string>
+								<string key="candidateClassName">NSProgressIndicator</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">pwField</string>

@@ -14,6 +14,8 @@ NSString *const SenderKey = @"Sender";
 
 @implementation AppController
 
+@synthesize progressIndicator;
+
 - (id)init
 {
     if (![super init]) {
@@ -87,9 +89,11 @@ NSString *const SenderKey = @"Sender";
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     NSURLResponse *response;
     NSError *error;
+    [self.progressIndicator startAnimation:self];
     NSData *urlData;
     urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *retCodeStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
+    [self.progressIndicator stopAnimation:self];
     int retCode = [retCodeStr intValue];
     NSString *infoTxt;
     NSString *image;
@@ -192,11 +196,6 @@ NSString *const SenderKey = @"Sender";
 -(IBAction)closeApplication:(id)sender
 {
     [NSApp terminate:self];
-}
-
--(IBAction)fetchAccount:(id)sender
-{
-    [self setAccountCredit];
 }
 
 -(IBAction)showPreferenceSheet:(id)sender

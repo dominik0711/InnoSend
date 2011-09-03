@@ -25,13 +25,15 @@ extern NSString *const SenderKey;
     IBOutlet NSTextField *userField;
     IBOutlet NSTextField *pwField;
     IBOutlet NSTextField *senderField;
+	IBOutlet NSProgressIndicator *progressIndicator;
     // Sheet to display errors on parse, connect, or XQuery
     NSAlert *alertSheet;
 
 }
+@property (nonatomic, retain) NSProgressIndicator *progressIndicator;
+
 -(IBAction)sendMessage:(id)sender;
 -(IBAction)closeApplication:(id)sender;
--(IBAction)fetchAccount:(id)sender;
 -(IBAction)showPreferenceSheet:(id)sender;
 -(IBAction)hidePreferenceSheet:(id)sender;
 -(void)setAccountCredit;
