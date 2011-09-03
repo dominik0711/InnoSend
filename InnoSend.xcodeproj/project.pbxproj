@@ -19,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B4352BA71411560900437B25 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B4352BAA14115AA200437B25 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = InnoSend/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4352BAC14115AC200437B25 /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4352BAD1411628D00437B25 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -39,6 +38,7 @@
 		B436119C140289F2000BDDFB /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		B4F13DC514117C72005E907E /* sms.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sms.icns; sourceTree = "<group>"; };
+		B4F290AD1412198100341398 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +229,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B436119514028969000BDDFB /* en */,
-				B4352BA71411560900437B25 /* de */,
+				B4F290AD1412198100341398 /* de */,
 			);
 			name = MainMenu.xib;
 			path = InnoSend;

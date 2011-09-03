@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 extern NSString *const UserNameKey;
 extern NSString *const PasswordKey;
+extern NSString *const SenderKey;
 
 @interface AppController : NSObject
 {
@@ -23,6 +24,7 @@ extern NSString *const PasswordKey;
     IBOutlet NSWindow *preferenceSheet;
     IBOutlet NSTextField *userField;
     IBOutlet NSTextField *pwField;
+    IBOutlet NSTextField *senderField;
     // Sheet to display errors on parse, connect, or XQuery
     NSAlert *alertSheet;
 
@@ -36,5 +38,6 @@ extern NSString *const PasswordKey;
 -(NSString *)accountCredit;
 -(NSString *)userName;
 -(NSString *)password;
+-(NSString *)sender;
 
 @end

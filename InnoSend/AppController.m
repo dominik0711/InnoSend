@@ -10,6 +10,7 @@
 #import <AppKit/NSImage.h>
 NSString *const UserNameKey = @"Username";
 NSString *const PasswordKey = @"Password";
+NSString *const SenderKey = @"Sender";
 
 @implementation AppController
 
@@ -30,10 +31,13 @@ NSString *const PasswordKey = @"Password";
     NSData *userAsData = [NSKeyedArchiver archivedDataWithRootObject:@"userId"];
     //Archive the password object
     NSData *passwordAsData = [NSKeyedArchiver archivedDataWithRootObject:@"password"];
+    //Archive the sender object
+    NSData *senderAsData = [NSKeyedArchiver archivedDataWithRootObject:@"sender"];
     
     //Put defaults in the dictionary
     [defaultValues setObject:userAsData forKey:UserNameKey];
     [defaultValues setObject:passwordAsData forKey:PasswordKey];
+    [defaultValues setObject:senderAsData forKey:SenderKey];
     
     //Register the dictionary of defaults
     [[NSUserDefaults standardUserDefaults]
@@ -52,6 +56,7 @@ NSString *const PasswordKey = @"Password";
 {
     [userField setStringValue:[self userName]];
     [pwField setStringValue:[self password]];
+    [senderField setStringValue:[self sender]];
 }
 
 -(IBAction)sendMessage:(id)sender
@@ -59,6 +64,7 @@ NSString *const PasswordKey = @"Password";
     NSString *type = @"2";
     NSString *user = [userField stringValue];
     NSString *pw = [pwField stringValue];
+    NSString *senderNumber = [senderField stringValue];
     NSString *address = [addressField stringValue];
     NSString *phoneNumber = [[address stringByReplacingOccurrencesOfString:@"+" withString:@"00"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *input = [messageField stringValue];
@@ -74,8 +80,9 @@ NSString *const PasswordKey = @"Password";
                            @"&pw=%@"
                            @"&text=%@"
                            @"&type=%@"
-                           @"&empfaenger=%@",
-                           user, pw, postData, type, phoneNumber];
+                           @"&empfaenger=%@"
+                           @"&absender=%@",
+                           user, pw, postData, type, phoneNumber, senderNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     NSURLResponse *response;
@@ -251,6 +258,13 @@ NSString *const PasswordKey = @"Password";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *passwordAsData = [defaults objectForKey:PasswordKey];
     return [NSKeyedUnarchiver unarchiveObjectWithData:passwordAsData];
+}
+
+-(NSString *)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *senderAsData = [defaults objectForKey:SenderKey];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:senderAsData];
 }
 
 @end
