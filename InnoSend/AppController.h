@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 extern NSString *const UserNameKey;
 extern NSString *const PasswordKey;
 extern NSString *const SenderKey;
@@ -19,27 +21,39 @@ extern NSString *const SenderKey;
     IBOutlet NSTextField *messageField;
     IBOutlet NSTextField *textCounter;
     IBOutlet NSTextField *accountLabel;
+    IBOutlet NSTextField *priceLabel;
     IBOutlet NSButton *sendButton;
     //Preference sheet
     IBOutlet NSWindow *preferenceSheet;
+    IBOutlet NSWindow *abPickerSheet;
     IBOutlet NSTextField *userField;
     IBOutlet NSTextField *pwField;
     IBOutlet NSTextField *senderField;
-	IBOutlet NSProgressIndicator *progressIndicator;
-    // Sheet to display errors on parse, connect, or XQuery
-    NSAlert *alertSheet;
-
+    IBOutlet NSProgressIndicator *progressIndicator;
+    IBOutlet NSButton *linkButton;
 }
 @property (nonatomic, retain) NSProgressIndicator *progressIndicator;
+//@property (retain) NSSound *sound;
 
+#pragma mark -
+#pragma mark Action Methods
 -(IBAction)sendMessage:(id)sender;
 -(IBAction)closeApplication:(id)sender;
 -(IBAction)showPreferenceSheet:(id)sender;
 -(IBAction)hidePreferenceSheet:(id)sender;
+-(IBAction)showABPickerSheet:(id)sender;
+-(IBAction)hideABPickerSheet:(id)sender;
+-(IBAction)openAccountPage:(id)sender;
+#pragma mark -
+#pragma mark Setter Methods
 -(void)setAccountCredit;
+-(void)setMessagePrice;
+#pragma mark -
+#pragma mark Getter Methods
 -(NSString *)accountCredit;
+-(NSString *)messagePrice;
 -(NSString *)userName;
 -(NSString *)password;
--(NSString *)sender;
+-(NSString *)senderAddress;
 
 @end

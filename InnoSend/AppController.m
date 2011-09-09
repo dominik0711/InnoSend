@@ -16,16 +16,13 @@ NSString *const SenderKey = @"Sender";
 
 @synthesize progressIndicator;
 
+#pragma mark -
+#pragma mark Initialization Methods 
 - (id)init
 {
     if (![super init]) {
         return nil;
     }
-    // Create an alert sheet used to show connection and parse errors
-    alertSheet = [[NSAlert alloc] init];
-    [alertSheet addButtonWithTitle:@"OK"];
-    [alertSheet setAlertStyle:NSWarningAlertStyle];
-
     //Create a dictionary
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
@@ -34,7 +31,7 @@ NSString *const SenderKey = @"Sender";
     //Archive the password object
     NSData *passwordAsData = [NSKeyedArchiver archivedDataWithRootObject:@"password"];
     //Archive the sender object
-    NSData *senderAsData = [NSKeyedArchiver archivedDataWithRootObject:@"sender"];
+    NSData *senderAsData = [NSKeyedArchiver archivedDataWithRootObject:@"senderAddress"];
     
     //Put defaults in the dictionary
     [defaultValues setObject:userAsData forKey:UserNameKey];
@@ -44,7 +41,7 @@ NSString *const SenderKey = @"Sender";
     //Register the dictionary of defaults
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
-    
+
     return self;
 }
 
@@ -54,12 +51,39 @@ NSString *const SenderKey = @"Sender";
     [self setAccountCredit];
 }
 
--(void)windowDidLoad
+#pragma mark -
+#pragma mark Notification Methods
+
+- (void)windowDidBecomeMain:(NSNotification *)notification
 {
-    [userField setStringValue:[self userName]];
-    [pwField setStringValue:[self password]];
-    [senderField setStringValue:[self sender]];
+    NSString * userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"userId"];
+    if (userName == NULL) {
+      [self showPreferenceSheet:nil];
+    }
 }
+
+// This controller is the delegate of the text field, and this gets called when the text changes.
+-(void)controlTextDidChange:(NSNotification *)note
+{
+    NSUInteger phoneCount = [[addressField stringValue] length];
+    NSUInteger count = [[messageField stringValue] length];
+    if (phoneCount == 0) {
+        [sendButton setEnabled:NO];
+    } else if (phoneCount == 0 || count == 0) {
+        [sendButton setEnabled:NO];
+    } else if (count <= 140) {
+        [sendButton setTitle:NSLocalizedString(@"Free SMS", @"free sms")];
+        [sendButton setEnabled:YES];
+    } else {
+        [sendButton setTitle:NSLocalizedString(@"Paid SMS", @"paid sms")];
+    }
+	textCounter.stringValue = [NSString stringWithFormat:@"%lu/160", count];
+    [self setMessagePrice];
+    
+}
+
+#pragma mark -
+#pragma mark Action Methods 
 
 -(IBAction)sendMessage:(id)sender
 {
@@ -68,7 +92,10 @@ NSString *const SenderKey = @"Sender";
     NSString *pw = [pwField stringValue];
     NSString *senderNo = [senderField stringValue];
     NSString *address = [addressField stringValue];
-    NSString *phoneNumber = [[address stringByReplacingOccurrencesOfString:@"+" withString:@"00"] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *phoneNumber = [[address stringByReplacingOccurrencesOfString:@"+" 
+                                                                withString:@"00"] 
+                             stringByReplacingOccurrencesOfString:@" " 
+                             withString:@""];
     NSString *input = [messageField stringValue];
     NSString *postData = [input stringByAddingPercentEscapesUsingEncoding:NSISOLatin1StringEncoding];
     NSUInteger messageLength = [[messageField stringValue] length];
@@ -77,7 +104,8 @@ NSString *const SenderKey = @"Sender";
     }
     NSString *senderNumber = @"";
     if ([senderNo length] > 0) {
-        senderNumber = [[senderNumber stringByAppendingString:@"&absender="] stringByAppendingString:senderNo];
+        senderNumber = [[senderNumber stringByAppendingString:@"&absender="] 
+                        stringByAppendingString:senderNo];
     }
     
     NSString *urlString = [NSString stringWithFormat:
@@ -90,17 +118,32 @@ NSString *const SenderKey = @"Sender";
                            @"%@",
                            user, pw, postData, type, phoneNumber, senderNumber];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url 
+                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad 
+                                            timeoutInterval:30];
     NSURLResponse *response;
     NSError *error;
     [self.progressIndicator startAnimation:self];
     NSData *urlData;
-    urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    NSString *retCodeStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
+    urlData = [NSURLConnection sendSynchronousRequest:urlRequest 
+                                    returningResponse:&response 
+                                                error:&error];
+    NSString *retCodeStr = [[NSString alloc] initWithData:urlData 
+                                                 encoding:NSUTF8StringEncoding]; 
     [self.progressIndicator stopAnimation:self];
     int retCode = [retCodeStr intValue];
     NSString *infoTxt;
     NSString *image;
+    //Add send sound if send is successful
+    SystemSoundID soundID;
+    NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"Sent" ofType:@"aiff"];
+    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
+    if (retCode == 100) {
+        AudioServicesPlaySystemSound(soundID); 
+    } else {
+        NSBeep();
+    }
+    [soundFile release];
     switch (retCode) {
         case 100:
             infoTxt = NSLocalizedString(@"Successfully send message.", @"successfully send") ;
@@ -168,33 +211,16 @@ NSString *const SenderKey = @"Sender";
             image = NSImageNameInfo;
             break;
     }
-    [alertSheet setMessageText:NSLocalizedString(@"Message status", @"message status")];
-    [alertSheet setInformativeText:[NSString stringWithFormat:@"%@", infoTxt]];
+    NSAlert *alertSheet = [NSAlert alertWithMessageText:NSLocalizedString(@"Message status", @"message status")
+                                     defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil
+                         informativeTextWithFormat:[NSString stringWithFormat:@"%@", infoTxt]];
+    
     [alertSheet setIcon:[NSImage imageNamed:image]];
     [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
     
     //Refresh account
-//    [self setAccountCredit];
+    [self setAccountCredit];
     return;
-}
-
-// This controller is the delegate of the text field, and this gets called when the text changes.
--(void)controlTextDidChange:(NSNotification *)note
-{
-    NSUInteger phoneCount = [[addressField stringValue] length];
-    NSUInteger count = [[messageField stringValue] length];
-    if (phoneCount == 0) {
-        [sendButton setEnabled:NO];
-    } else if (phoneCount == 0 || count == 0) {
-        [sendButton setEnabled:NO];
-    } else if (count <= 140) {
-        [sendButton setTitle:NSLocalizedString(@"Free SMS", @"free sms")];
-        [sendButton setEnabled:YES];
-    } else {
-        [sendButton setTitle:NSLocalizedString(@"Paid SMS", @"paid sms")];
-    }
-	textCounter.stringValue = [NSString stringWithFormat:@"%lu/140", count];
-    
 }
 
 -(IBAction)closeApplication:(id)sender
@@ -215,6 +241,22 @@ NSString *const SenderKey = @"Sender";
 {
     [NSApp endSheet:preferenceSheet];
     [preferenceSheet orderOut:sender];
+    [self setAccountCredit];
+}
+
+-(IBAction)showABPickerSheet:(id)sender
+{
+    [NSApp beginSheet:abPickerSheet
+       modalForWindow:[addressField window]
+        modalDelegate:nil 
+       didEndSelector:nil 
+          contextInfo:nil];
+}
+
+-(IBAction)hideABPickerSheet:(id)sender
+{
+    [NSApp endSheet:abPickerSheet];
+    [abPickerSheet orderOut:sender];
 }
 
 -(void)setAccountCredit
@@ -224,8 +266,9 @@ NSString *const SenderKey = @"Sender";
     if (retCode == 112) {
         accountCredit = @"";
     }
-    accountLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Credit: %@", @"credit"), accountCredit];
-
+    accountLabel.stringValue = 
+        [NSString stringWithFormat:NSLocalizedString(@"Credit: %@", @"credit"), 
+         accountCredit];
 }
 
 -(NSString *)accountCredit
@@ -238,15 +281,50 @@ NSString *const SenderKey = @"Sender";
                            @"&pw=%@",
                            user, pw];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+    NSURLRequest *urlRequest = 
+        [NSURLRequest requestWithURL:url 
+                         cachePolicy:NSURLRequestReturnCacheDataElseLoad 
+                     timeoutInterval:30];
     NSURLResponse *response;
     NSError *error;
     NSData *urlData;
-    urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    NSString *theString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
+    urlData = [NSURLConnection sendSynchronousRequest:urlRequest 
+                                    returningResponse:&response 
+                                                error:&error];
+    
+    NSString *theString = [[NSString alloc] initWithData:urlData 
+                                                encoding:NSUTF8StringEncoding]; 
     
     return [NSString stringWithFormat:@"%@", theString];
     
+}
+
+-(void)setMessagePrice
+{
+    priceLabel.stringValue = 
+        [NSString stringWithFormat:NSLocalizedString(@"Price: %@", @"price"), 
+         [self messagePrice]];
+}
+
+-(NSString *)messagePrice
+{
+    NSString *price;
+    NSUInteger count = [[messageField stringValue] length];
+    if (count == 0) {
+        price = @"0,000";
+    } else if (count < 161) {
+        price = @"0,030";
+    } else {
+        price = @"0,079";
+    }
+    
+    return price;
+}
+
+-(IBAction)openAccountPage:(id)sender
+{
+    NSString *stringURL = @"http://innosend.de/index.php?seite=login";
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:stringURL]];
 }
 
 -(NSString *)userName
@@ -263,7 +341,7 @@ NSString *const SenderKey = @"Sender";
     return [NSKeyedUnarchiver unarchiveObjectWithData:passwordAsData];
 }
 
--(NSString *)sender
+-(NSString *)senderAddress
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *senderAsData = [defaults objectForKey:SenderKey];
