@@ -8,6 +8,7 @@
 
 #import "AppController.h"
 #import <AppKit/NSImage.h>
+NSString *const ServiceKey = @"Service";
 NSString *const UserNameKey = @"Username";
 NSString *const PasswordKey = @"Password";
 NSString *const SenderKey = @"Sender";
@@ -27,6 +28,8 @@ NSString *const SenderKey = @"Sender";
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
     //Archive the user object
+    NSData *serviceAsData = [NSKeyedArchiver archivedDataWithRootObject:@"service"];
+    //Archive the user object
     NSData *userAsData = [NSKeyedArchiver archivedDataWithRootObject:@"userId"];
     //Archive the password object
     NSData *passwordAsData = [NSKeyedArchiver archivedDataWithRootObject:@"password"];
@@ -34,6 +37,7 @@ NSString *const SenderKey = @"Sender";
     NSData *senderAsData = [NSKeyedArchiver archivedDataWithRootObject:@"senderAddress"];
     
     //Put defaults in the dictionary
+    [defaultValues setObject:serviceAsData forKey:ServiceKey];
     [defaultValues setObject:userAsData forKey:UserNameKey];
     [defaultValues setObject:passwordAsData forKey:PasswordKey];
     [defaultValues setObject:senderAsData forKey:SenderKey];
@@ -47,8 +51,11 @@ NSString *const SenderKey = @"Sender";
 
 -(void)awakeFromNib
 {
-    //set account account
-    [self setAccountCredit];
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    if (serviceName != NULL) {
+        //set account account
+        [self setAccountCredit];
+    }
 }
 
 #pragma mark -
@@ -57,8 +64,9 @@ NSString *const SenderKey = @"Sender";
 - (void)windowDidBecomeMain:(NSNotification *)notification
 {
     NSString * userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"userId"];
-    if (userName == NULL) {
-      [self showPreferenceSheet:nil];
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    if (userName == NULL || serviceName == NULL) {
+        [self showPreferenceSheet:nil];
     }
 }
 
@@ -109,14 +117,16 @@ NSString *const SenderKey = @"Sender";
     }
     
     NSString *urlString = [NSString stringWithFormat:
-                           @"https://www.innosend.de/gateway/sms.php?"
+                           @"%@"
                            @"id=%@"
                            @"&pw=%@"
                            @"&text=%@"
                            @"&type=%@"
                            @"&empfaenger=%@"
                            @"%@",
-                           user, pw, postData, type, phoneNumber, senderNumber];
+                           [self serviceSenderURL], 
+                           user, pw, postData, 
+                           type, phoneNumber, senderNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url 
                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad 
@@ -239,9 +249,21 @@ NSString *const SenderKey = @"Sender";
 
 -(IBAction)hidePreferenceSheet:(id)sender
 {
-    [NSApp endSheet:preferenceSheet];
-    [preferenceSheet orderOut:sender];
-    [self setAccountCredit];
+    NSString * userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"userId"];
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    if (userName != NULL && serviceName != NULL) {
+        [NSApp endSheet:preferenceSheet];
+        [preferenceSheet orderOut:sender];
+        [self setAccountCredit];
+    }
+//    } else {
+//        NSAlert *alertSheet = [NSAlert alertWithMessageText:NSLocalizedString(@"missingService", @"missing service")
+//                                              defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil
+//                                  informativeTextWithFormat:[NSString stringWithString:NSLocalizedString(@"missingServiceInfo", @"missing service info")]];
+//        
+//        [alertSheet setIcon:[NSImage imageNamed:NSImageNameCaution]];
+//        [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
+//    }
 }
 
 -(IBAction)showABPickerSheet:(id)sender
@@ -276,10 +298,10 @@ NSString *const SenderKey = @"Sender";
     NSString *user = [userField stringValue];
     NSString *pw = [pwField stringValue];
     NSString *urlString = [NSString stringWithFormat:
-                           @"http://www.innosend.de/gateway/konto.php?"
+                           @"%@"
                            @"id=%@"
                            @"&pw=%@",
-                           user, pw];
+                           [self serviceAccountURL], user, pw];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = 
         [NSURLRequest requestWithURL:url 
@@ -323,8 +345,7 @@ NSString *const SenderKey = @"Sender";
 
 -(IBAction)openAccountPage:(id)sender
 {
-    NSString *stringURL = @"http://innosend.de/index.php?seite=login";
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:stringURL]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[self serviceLoginURL]]];
 }
 
 -(NSString *)userName
@@ -346,6 +367,44 @@ NSString *const SenderKey = @"Sender";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *senderAsData = [defaults objectForKey:SenderKey];
     return [NSKeyedUnarchiver unarchiveObjectWithData:senderAsData];
+}
+
+-(NSString *)serviceSenderURL
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    NSString *serviceStr;
+    if ([serviceName isEqualToString:@"Innosend"]) {
+        serviceStr = @"https://www.innosend.de/gateway/sms.php?";
+    } else {
+        serviceStr = @"https://www.smskaufen.com/sms/gateway/sms.php?";
+    }
+    return serviceStr;
+}
+
+-(NSString *)serviceLoginURL
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    NSString *serviceStr;
+    if ([serviceName isEqualToString:@"Innosend"]) {
+        serviceStr = @"https://innosend.de/index.php?seite=login";
+    } else {
+        serviceStr = @"http://www.smskaufen.com/sms/index.php?seite=login";
+    }
+    return serviceStr;
+}
+
+-(NSString *)serviceAccountURL
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    NSString *serviceStr;
+    if ([serviceName isEqualToString:@"Innosend"]) {
+        serviceStr = @"https://www.innosend.de/gateway/konto.php?";
+    } else if ([serviceName isEqualToString:@"smskaufen"]) {
+        serviceStr = @"https://www.smskaufen.com/sms/gateway/konto.php?";
+    } else {
+        serviceStr = @"";
+    }
+    return serviceStr;
 }
 
 @end

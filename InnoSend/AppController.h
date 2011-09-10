@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+extern NSString *const ServiceKey;
 extern NSString *const UserNameKey;
 extern NSString *const PasswordKey;
 extern NSString *const SenderKey;
@@ -26,11 +27,13 @@ extern NSString *const SenderKey;
     //Preference sheet
     IBOutlet NSWindow *preferenceSheet;
     IBOutlet NSWindow *abPickerSheet;
+    IBOutlet NSTextField *serviceField;
     IBOutlet NSTextField *userField;
     IBOutlet NSTextField *pwField;
     IBOutlet NSTextField *senderField;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSButton *linkButton;
+    IBOutlet NSComboBox *serviceCB;
 }
 @property (nonatomic, retain) NSProgressIndicator *progressIndicator;
 //@property (retain) NSSound *sound;
@@ -55,5 +58,8 @@ extern NSString *const SenderKey;
 -(NSString *)userName;
 -(NSString *)password;
 -(NSString *)senderAddress;
+-(NSString *)serviceSenderURL;
+-(NSString *)serviceLoginURL;
+-(NSString *)serviceAccountURL;
 
 @end
