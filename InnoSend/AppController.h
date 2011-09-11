@@ -34,6 +34,8 @@ extern NSString *const SenderKey;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSButton *linkButton;
     IBOutlet NSComboBox *serviceCB;
+    IBOutlet NSButton *newAccount;
+    IBOutlet NSButton *changePassword;
 }
 @property (nonatomic, retain) NSProgressIndicator *progressIndicator;
 //@property (retain) NSSound *sound;
@@ -47,6 +49,8 @@ extern NSString *const SenderKey;
 -(IBAction)showABPickerSheet:(id)sender;
 -(IBAction)hideABPickerSheet:(id)sender;
 -(IBAction)openAccountPage:(id)sender;
+-(IBAction)newAccount:(id)sender;
+-(IBAction)changePassword:(id)sender;
 #pragma mark -
 #pragma mark Setter Methods
 -(void)setAccountCredit;
@@ -61,5 +65,7 @@ extern NSString *const SenderKey;
 -(NSString *)serviceSenderURL;
 -(NSString *)serviceLoginURL;
 -(NSString *)serviceAccountURL;
+-(NSString *)newAccountURL;
+-(NSString *)changePasswordURL;
 
 @end

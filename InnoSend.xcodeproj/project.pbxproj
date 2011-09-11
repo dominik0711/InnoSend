@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B428F70914135C550013C084 /* PickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B428F70814135C550013C084 /* PickerController.m */; };
 		B428F70C14135E260013C084 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B428F70B14135E260013C084 /* AddressBook.framework */; };
+		B433CBA6141D1A840035064B /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = B433CBA5141D1A840035064B /* plus.png */; };
 		B4352BAB14115AA200437B25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4352BA914115AA200437B25 /* Localizable.strings */; };
 		B436118014028969000BDDFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B436117F14028969000BDDFB /* Cocoa.framework */; };
 		B436118A14028969000BDDFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B436118814028969000BDDFB /* InfoPlist.strings */; };
@@ -27,6 +28,7 @@
 		B428F70714135C550013C084 /* PickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerController.h; sourceTree = "<group>"; };
 		B428F70814135C550013C084 /* PickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerController.m; sourceTree = "<group>"; };
 		B428F70B14135E260013C084 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		B433CBA5141D1A840035064B /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		B4352BAA14115AA200437B25 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = InnoSend/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4352BAC14115AC200437B25 /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4352BAD1411628D00437B25 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				B44C2AE21416A5E40090B9FC /* Sent.aiff */,
+				B433CBA5141D1A840035064B /* plus.png */,
 				B4352BA914115AA200437B25 /* Localizable.strings */,
 				B4F13DC514117C72005E907E /* sms.icns */,
 				B436119414028969000BDDFB /* MainMenu.xib */,
@@ -198,6 +201,7 @@
 				B4352BAB14115AA200437B25 /* Localizable.strings in Resources */,
 				B4F13DC614117C72005E907E /* sms.icns in Resources */,
 				B44C2AE31416A5E40090B9FC /* Sent.aiff in Resources */,
+				B433CBA6141D1A840035064B /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,6 +75,12 @@ NSString *const SenderKey = @"Sender";
 {
     NSUInteger phoneCount = [[addressField stringValue] length];
     NSUInteger count = [[messageField stringValue] length];
+    NSUInteger userNameLength = [[userField stringValue] length];
+    if (userNameLength > 0) {
+        [changePassword setEnabled:YES];
+    } else {
+        [changePassword setEnabled:NO];
+    }
     if (phoneCount == 0) {
         [sendButton setEnabled:NO];
     } else if (phoneCount == 0 || count == 0) {
@@ -88,6 +94,18 @@ NSString *const SenderKey = @"Sender";
 	textCounter.stringValue = [NSString stringWithFormat:@"%lu/160", count];
     [self setMessagePrice];
     
+}
+
+// This controller is the delegate of the combobox and it get's called when the 
+// selection changes
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    if (serviceName != NULL) {
+        [newAccount setEnabled:YES];
+    } else {
+        [newAccount setEnabled:NO];
+    }
 }
 
 #pragma mark -
@@ -281,6 +299,16 @@ NSString *const SenderKey = @"Sender";
     [abPickerSheet orderOut:sender];
 }
 
+-(IBAction)newAccount:(id)sender
+{
+   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[self newAccountURL]]]; 
+}
+
+-(IBAction)changePassword:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[self changePasswordURL]]]; 
+}
+
 -(void)setAccountCredit
 {
     NSString *accountCredit = [self accountCredit];
@@ -401,6 +429,34 @@ NSString *const SenderKey = @"Sender";
         serviceStr = @"https://www.innosend.de/gateway/konto.php?";
     } else if ([serviceName isEqualToString:@"smskaufen"]) {
         serviceStr = @"https://www.smskaufen.com/sms/gateway/konto.php?";
+    } else {
+        serviceStr = @"";
+    }
+    return serviceStr;
+}
+
+-(NSString *)newAccountURL
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    NSString *serviceStr;
+    if ([serviceName isEqualToString:@"Innosend"]) {
+        serviceStr = @"https://innosend.de/index.php?seite=anmeld";
+    } else if ([serviceName isEqualToString:@"smskaufen"]) {
+        serviceStr = @"https://www.smskaufen.com/sms/index.php?seite=anmeld";
+    } else {
+        serviceStr = @"";
+    }
+    return serviceStr;
+}
+
+-(NSString *)changePasswordURL
+{
+    NSString * serviceName = [[NSUserDefaults standardUserDefaults] stringForKey:@"service"];
+    NSString *serviceStr;
+    if ([serviceName isEqualToString:@"Innosend"]) {
+        serviceStr = @"https://innosend.de/index.php?seite=pwver";
+    } else if ([serviceName isEqualToString:@"smskaufen"]) {
+        serviceStr = @"https://www.smskaufen.com/sms/index.php?seite=pwver";
     } else {
         serviceStr = @"";
     }
