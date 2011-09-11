@@ -676,7 +676,7 @@
 							<string key="NSFrame">{{86, 130}, {230, 22}}</string>
 							<reference key="NSSuperview" ref="293525271"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="768213931"/>
+							<reference key="NSNextKeyView" ref="860228072"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:248</string>
 							<bool key="NSEnabled">YES</bool>
@@ -741,7 +741,7 @@
 							<string key="NSFrame">{{86, 98}, {230, 22}}</string>
 							<reference key="NSSuperview" ref="293525271"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="304819290"/>
+							<reference key="NSNextKeyView" ref="271698754"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2943</string>
 							<bool key="NSEnabled">YES</bool>
@@ -956,7 +956,7 @@
 								</object>
 							</object>
 						</object>
-						<object class="NSButton" id="768213931">
+						<object class="NSButton" id="860228072">
 							<reference key="NSNextResponder" ref="293525271"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{324, 129}, {24, 24}}</string>
@@ -965,13 +965,13 @@
 							<reference key="NSNextKeyView" ref="101478611"/>
 							<string key="NSReuseIdentifierKey">_NS:161</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="315518415">
+							<object class="NSButtonCell" key="NSCell" id="639230895">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="48790705"/>
 								<string key="NSCellIdentifier">_NS:161</string>
-								<reference key="NSControlView" ref="768213931"/>
+								<reference key="NSControlView" ref="860228072"/>
 								<int key="NSButtonFlags">-2033958657</int>
 								<int key="NSButtonFlags2">162</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -984,7 +984,7 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="304819290">
+						<object class="NSButton" id="271698754">
 							<reference key="NSNextResponder" ref="293525271"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{324, 97}, {24, 24}}</string>
@@ -993,13 +993,13 @@
 							<reference key="NSNextKeyView" ref="203885957"/>
 							<string key="NSReuseIdentifierKey">_NS:161</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="456594111">
-								<int key="NSCellFlags">-1543373312</int>
+							<object class="NSButtonCell" key="NSCell" id="503126108">
+								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="48790705"/>
 								<string key="NSCellIdentifier">_NS:161</string>
-								<reference key="NSControlView" ref="304819290"/>
+								<reference key="NSControlView" ref="271698754"/>
 								<int key="NSButtonFlags">-2033958657</int>
 								<int key="NSButtonFlags2">162</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -1486,7 +1486,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">newAccount:</string>
 						<reference key="source" ref="18439955"/>
-						<reference key="destination" ref="768213931"/>
+						<reference key="destination" ref="860228072"/>
 					</object>
 					<int key="connectionID">694</int>
 				</object>
@@ -1494,7 +1494,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">changePassword:</string>
 						<reference key="source" ref="18439955"/>
-						<reference key="destination" ref="304819290"/>
+						<reference key="destination" ref="271698754"/>
 					</object>
 					<int key="connectionID">695</int>
 				</object>
@@ -1502,7 +1502,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">changePassword</string>
 						<reference key="source" ref="18439955"/>
-						<reference key="destination" ref="304819290"/>
+						<reference key="destination" ref="271698754"/>
 					</object>
 					<int key="connectionID">696</int>
 				</object>
@@ -1510,7 +1510,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">newAccount</string>
 						<reference key="source" ref="18439955"/>
-						<reference key="destination" ref="768213931"/>
+						<reference key="destination" ref="860228072"/>
 					</object>
 					<int key="connectionID">697</int>
 				</object>
@@ -1860,8 +1860,8 @@
 							<reference ref="70819805"/>
 							<reference ref="447537949"/>
 							<reference ref="418689201"/>
-							<reference ref="768213931"/>
-							<reference ref="304819290"/>
+							<reference ref="860228072"/>
+							<reference ref="271698754"/>
 						</object>
 						<reference key="parent" ref="110632925"/>
 					</object>
@@ -2159,31 +2159,31 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">690</int>
-						<reference key="object" ref="768213931"/>
+						<reference key="object" ref="860228072"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="315518415"/>
+							<reference ref="639230895"/>
 						</object>
 						<reference key="parent" ref="293525271"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">691</int>
-						<reference key="object" ref="315518415"/>
-						<reference key="parent" ref="768213931"/>
+						<reference key="object" ref="639230895"/>
+						<reference key="parent" ref="860228072"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">692</int>
-						<reference key="object" ref="304819290"/>
+						<reference key="object" ref="271698754"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="456594111"/>
+							<reference ref="503126108"/>
 						</object>
 						<reference key="parent" ref="293525271"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">693</int>
-						<reference key="object" ref="456594111"/>
-						<reference key="parent" ref="304819290"/>
+						<reference key="object" ref="503126108"/>
+						<reference key="parent" ref="271698754"/>
 					</object>
 				</object>
 			</object>
@@ -2283,8 +2283,10 @@
 					<string>681.IBPluginDependency</string>
 					<string>682.IBComboBoxObjectValuesKey.objectValues</string>
 					<string>682.IBPluginDependency</string>
+					<string>690.IBAttributePlaceholdersKey</string>
 					<string>690.IBPluginDependency</string>
 					<string>691.IBPluginDependency</string>
+					<string>692.IBAttributePlaceholdersKey</string>
 					<string>692.IBPluginDependency</string>
 					<string>693.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
@@ -2394,8 +2396,24 @@
 						<string>smskaufen</string>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="860228072"/>
+							<string key="toolTip">Add new account</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="271698754"/>
+							<string key="toolTip">Change password...</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
