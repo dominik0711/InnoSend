@@ -24,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B4122874141A9F0D0002D57A /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B428F70714135C550013C084 /* PickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerController.h; sourceTree = "<group>"; };
 		B428F70814135C550013C084 /* PickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerController.m; sourceTree = "<group>"; };
 		B428F70B14135E260013C084 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -49,6 +48,7 @@
 		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; tabWidth = 4; };
 		B44C2AE21416A5E40090B9FC /* Sent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Sent.aiff; sourceTree = "<group>"; };
 		B468C2EE1416C8610075CB0E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B4A32D0A141D38F70057013C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B4F13DC514117C72005E907E /* sms.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sms.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,7 +252,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B436119514028969000BDDFB /* en */,
-				B4122874141A9F0D0002D57A /* de */,
+				B4A32D0A141D38F70057013C /* de */,
 			);
 			name = MainMenu.xib;
 			path = InnoSend;
