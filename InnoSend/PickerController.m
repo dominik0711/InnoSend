@@ -11,72 +11,26 @@
 #import <AddressBook/ABGlobals.h>
 
 @implementation PickerController
-@synthesize nameDoubleAction, target;
+@synthesize nameDoubleAction, target, selectedPhoneNumber;
 
-- (IBAction)getGroups:(id)sender
+-(void)awakeFromNib
 {
-    NSArray *groups = [ppView selectedGroups];
-    NSLog(@"getGroups: %lu groups selected", [groups count]);
-    int index;
-    for(index=0; index<[groups count]; index++) {
-        NSLog(@"  Group %i: %@", index, [(ABRecord *)[groups objectAtIndex:index] uniqueId]);
-    }  
-}
-
-// get the records (people) currently selected in the view and iterate through
-- (IBAction)getRecords:(id)sender
-{
-    NSArray *records = [ppView selectedRecords];
-    NSLog(@"getRecords: %lu records selected", [records count]);
-    int index;
-    for(index=0; index<[records count]; index++) {
-        NSLog(@"  Record %i: %@", index, [(ABRecord *)[records objectAtIndex:index] uniqueId]);
-    }
-}
-
-
-// Activate specific values for display
-- (IBAction)viewProperty:(NSButton *)sender {
-    NSString *property;
-    // See MainMenu.nib for the corresponding checkbox tags.
-    switch ([sender tag]) {
-        case 0: // Phone
-            property = kABPhoneProperty;
-            break;
-        case 1: // Address
-            property = kABAddressProperty;
-            break;
-        case 2: // Email
-            property = kABEmailProperty;
-            break;
-        default:
-            property = kABHomePageProperty;
-            break;
-    } 
-    if ([sender state] == NSOnState) {
-        [ppView addProperty:property];
-    } else {
-        [ppView removeProperty:property];
-    }
-}
-
-
-// [dis]allows groupSelection in our peoplepicker.
-- (IBAction)setGroupSelection:(NSButton *)sender {
-    [ppView setAllowsGroupSelection:([sender state] == NSOnState)];
-}
-
-- (IBAction) setMultiRecordSelection:(NSButton *)sender {
-    [ppView setAllowsMultipleSelection:([sender state] == NSOnState)];
-}
-
-- (IBAction)editInAB:(id)sender {
-    [ppView editInAddressBook:sender];
+    [ppView setTarget:self];
+    [ppView setNameDoubleAction:@selector(selectInAB:)];
 }
 
 - (IBAction)selectInAB:(id)sender {
-    [ppView selectInAddressBook:sender];
-    NSLog(@"selected Person = %@",NSStringFromSelector([ppView nameDoubleAction]));
+//    [appC setAddressFieldNumber:[[ppView selectedValues] objectAtIndex:0]];
+    [appController hideABPickerSheet:nil];
+    [appController setAddressFieldNumber:[[ppView selectedValues] objectAtIndex:0]];
+//    [appC setAddressFieldNumber:@"01757254508"];
+//    NSString *phoneNumber = [[ppView selectedValues] objectAtIndex:0];
+//    [appC setValue:phoneNumber forKey:@"abPhone"];
+//    [setValue:[[ppView selectedValues] objectAtIndex:0] forKey:phoneNumber];
+//    [appC setAddressFieldNumber:@"0711840045"];
+//    [mainWindow setAddressFieldNumber:[[ppView selectedValues] objectAtIndex:0]];
+//    [mainWindow hideABPickerSheet:nil];
+//    [addressField setValue:[[ppView selectedValues] objectAtIndex:0]];
 }
 
 @end

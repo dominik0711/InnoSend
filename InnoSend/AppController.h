@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <Cocoa/Cocoa.h>
+#import <AddressBook/ABPeoplePickerView.h>
 
 extern NSString *const ServiceKey;
 extern NSString *const UserNameKey;
@@ -17,6 +19,7 @@ extern NSString *const SenderKey;
 @interface AppController : NSObject
 {
     IBOutlet NSWindow *mainWindow;
+    IBOutlet ABPeoplePickerView *ppView;
 
     IBOutlet NSTextField *addressField;
     IBOutlet NSTextField *messageField;
@@ -24,6 +27,7 @@ extern NSString *const SenderKey;
     IBOutlet NSTextField *accountLabel;
     IBOutlet NSTextField *priceLabel;
     IBOutlet NSButton *sendButton;
+    NSString *abPhone;
     //Preference sheet
     IBOutlet NSWindow *preferenceSheet;
     IBOutlet NSWindow *abPickerSheet;
@@ -38,6 +42,11 @@ extern NSString *const SenderKey;
     IBOutlet NSButton *changePassword;
 }
 @property (nonatomic, retain) NSProgressIndicator *progressIndicator;
+@property (nonatomic, retain) NSString *abPhone;
+@property (nonatomic, assign) SEL nameDoubleAction;
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) NSString *selectedPhoneNumber;
+
 //@property (retain) NSSound *sound;
 
 #pragma mark -
@@ -54,6 +63,7 @@ extern NSString *const SenderKey;
 #pragma mark -
 #pragma mark Setter Methods
 -(void)setAccountCredit;
+-(void)setAddressFieldNumber:(NSString *)number;
 -(void)setMessagePrice;
 #pragma mark -
 #pragma mark Getter Methods
@@ -67,5 +77,6 @@ extern NSString *const SenderKey;
 -(NSString *)serviceAccountURL;
 -(NSString *)newAccountURL;
 -(NSString *)changePasswordURL;
+-(NSString *)normalizePhoneNumber:(NSString *)number;
 
 @end

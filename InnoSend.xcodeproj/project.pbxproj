@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B428F70914135C550013C084 /* PickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B428F70814135C550013C084 /* PickerController.m */; };
 		B428F70C14135E260013C084 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B428F70B14135E260013C084 /* AddressBook.framework */; };
 		B433CBA6141D1A840035064B /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = B433CBA5141D1A840035064B /* plus.png */; };
 		B4352BAB14115AA200437B25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4352BA914115AA200437B25 /* Localizable.strings */; };
@@ -20,12 +19,13 @@
 		B436119E140289F2000BDDFB /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119D140289F2000BDDFB /* AppController.m */; };
 		B44C2AE31416A5E40090B9FC /* Sent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B44C2AE21416A5E40090B9FC /* Sent.aiff */; };
 		B468C2EF1416C8610075CB0E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B468C2EE1416C8610075CB0E /* AudioToolbox.framework */; };
+		B49664E31422646A00215498 /* MessageBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B49664E11422646A00215498 /* MessageBox.xcdatamodeld */; };
+		B49664E61422651E00215498 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49664E51422651E00215498 /* CoreData.framework */; };
+		B49664E9142266CF00215498 /* Outbox.m in Sources */ = {isa = PBXBuildFile; fileRef = B49664E8142266CF00215498 /* Outbox.m */; };
 		B4F13DC614117C72005E907E /* sms.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4F13DC514117C72005E907E /* sms.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B428F70714135C550013C084 /* PickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerController.h; sourceTree = "<group>"; };
-		B428F70814135C550013C084 /* PickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerController.m; sourceTree = "<group>"; };
 		B428F70B14135E260013C084 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		B433CBA5141D1A840035064B /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		B4352BAA14115AA200437B25 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = InnoSend/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -48,6 +48,10 @@
 		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; tabWidth = 4; };
 		B44C2AE21416A5E40090B9FC /* Sent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Sent.aiff; sourceTree = "<group>"; };
 		B468C2EE1416C8610075CB0E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B49664E21422646A00215498 /* MessageBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = MessageBox.xcdatamodel; path = InnoSend/MessageBox.xcdatamodeld/MessageBox.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		B49664E51422651E00215498 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B49664E7142266CF00215498 /* Outbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbox.h; sourceTree = "<group>"; };
+		B49664E8142266CF00215498 /* Outbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outbox.m; sourceTree = "<group>"; };
 		B4A32D0A141D38F70057013C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B4F13DC514117C72005E907E /* sms.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sms.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49664E61422651E00215498 /* CoreData.framework in Frameworks */,
 				B468C2EF1416C8610075CB0E /* AudioToolbox.framework in Frameworks */,
 				B428F70C14135E260013C084 /* AddressBook.framework in Frameworks */,
 				B436118014028969000BDDFB /* Cocoa.framework in Frameworks */,
@@ -81,6 +86,7 @@
 		B436117014028969000BDDFB = {
 			isa = PBXGroup;
 			children = (
+				B49664E51422651E00215498 /* CoreData.framework */,
 				B42038BE140D1AD500166745 /* Resources */,
 				B436118514028969000BDDFB /* InnoSend */,
 				B436117E14028969000BDDFB /* Frameworks */,
@@ -120,13 +126,14 @@
 		B436118514028969000BDDFB /* InnoSend */ = {
 			isa = PBXGroup;
 			children = (
-				B428F70714135C550013C084 /* PickerController.h */,
-				B428F70814135C550013C084 /* PickerController.m */,
+				B49664E7142266CF00215498 /* Outbox.h */,
+				B49664E8142266CF00215498 /* Outbox.m */,
 				B436119C140289F2000BDDFB /* AppController.h */,
 				B436119D140289F2000BDDFB /* AppController.m */,
 				B436119114028969000BDDFB /* InnoSendAppDelegate.h */,
 				B436119214028969000BDDFB /* InnoSendAppDelegate.m */,
 				B436118614028969000BDDFB /* Supporting Files */,
+				B49664E11422646A00215498 /* MessageBox.xcdatamodeld */,
 			);
 			path = InnoSend;
 			sourceTree = "<group>";
@@ -215,7 +222,8 @@
 				B436118C14028969000BDDFB /* main.m in Sources */,
 				B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */,
 				B436119E140289F2000BDDFB /* AppController.m in Sources */,
-				B428F70914135C550013C084 /* PickerController.m in Sources */,
+				B49664E31422646A00215498 /* MessageBox.xcdatamodeld in Sources */,
+				B49664E9142266CF00215498 /* Outbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +363,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B49664E11422646A00215498 /* MessageBox.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B49664E21422646A00215498 /* MessageBox.xcdatamodel */,
+			);
+			currentVersion = B49664E21422646A00215498 /* MessageBox.xcdatamodel */;
+			path = MessageBox.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B436117214028969000BDDFB /* Project object */;
 }

@@ -15,7 +15,9 @@ NSString *const SenderKey = @"Sender";
 
 @implementation AppController
 
-@synthesize progressIndicator;
+@synthesize progressIndicator, abPhone;
+@synthesize nameDoubleAction, target, selectedPhoneNumber;
+
 
 #pragma mark -
 #pragma mark Initialization Methods 
@@ -45,7 +47,7 @@ NSString *const SenderKey = @"Sender";
     //Register the dictionary of defaults
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
-
+    
     return self;
 }
 
@@ -56,6 +58,8 @@ NSString *const SenderKey = @"Sender";
         //set account account
         [self setAccountCredit];
     }
+    [ppView setTarget:self];
+    [ppView setNameDoubleAction:@selector(setAddressFieldNumber:)];
 }
 
 #pragma mark -
@@ -110,7 +114,6 @@ NSString *const SenderKey = @"Sender";
 
 #pragma mark -
 #pragma mark Action Methods 
-
 -(IBAction)sendMessage:(id)sender
 {
     NSString *type = @"2";
@@ -118,10 +121,7 @@ NSString *const SenderKey = @"Sender";
     NSString *pw = [pwField stringValue];
     NSString *senderNo = [senderField stringValue];
     NSString *address = [addressField stringValue];
-    NSString *phoneNumber = [[address stringByReplacingOccurrencesOfString:@"+" 
-                                                                withString:@"00"] 
-                             stringByReplacingOccurrencesOfString:@" " 
-                             withString:@""];
+    NSString *phoneNumber = [self normalizePhoneNumber:address];
     NSString *input = [messageField stringValue];
     NSString *postData = [input stringByAddingPercentEscapesUsingEncoding:NSISOLatin1StringEncoding];
     NSUInteger messageLength = [[messageField stringValue] length];
@@ -246,8 +246,11 @@ NSString *const SenderKey = @"Sender";
     [alertSheet setIcon:[NSImage imageNamed:image]];
     [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
     
-    //Refresh account
-    [self setAccountCredit];
+    if (retCode == 100) {
+        [messageField setStringValue:@""];
+        //Refresh account
+        [self setAccountCredit];
+    }
     return;
 }
 
@@ -287,16 +290,16 @@ NSString *const SenderKey = @"Sender";
 -(IBAction)showABPickerSheet:(id)sender
 {
     [NSApp beginSheet:abPickerSheet
-       modalForWindow:[addressField window]
-        modalDelegate:nil 
-       didEndSelector:nil 
+       modalForWindow:mainWindow
+        modalDelegate:self 
+       didEndSelector:nil
           contextInfo:nil];
 }
 
 -(IBAction)hideABPickerSheet:(id)sender
 {
     [NSApp endSheet:abPickerSheet];
-    [abPickerSheet orderOut:sender];
+    [abPickerSheet orderOut:self];
 }
 
 -(IBAction)newAccount:(id)sender
@@ -309,6 +312,8 @@ NSString *const SenderKey = @"Sender";
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[self changePasswordURL]]]; 
 }
 
+#pragma mark -
+#pragma mark Setter Methods 
 -(void)setAccountCredit
 {
     NSString *accountCredit = [self accountCredit];
@@ -321,6 +326,24 @@ NSString *const SenderKey = @"Sender";
          accountCredit];
 }
 
+-(void)setAddressFieldNumber:(id)sender
+{
+    NSArray *addressArr = [ppView selectedValues];
+    if (addressArr != nil && [addressArr count] != 0) {
+        [self setAbPhone:[addressArr objectAtIndex:0]];
+    }
+    [self hideABPickerSheet:nil];
+}
+
+-(void)setMessagePrice
+{
+    priceLabel.stringValue = 
+    [NSString stringWithFormat:NSLocalizedString(@"Price: %@", @"price"), 
+     [self messagePrice]];
+}
+
+#pragma mark -
+#pragma mark Getter Methods 
 -(NSString *)accountCredit
 {
     NSString *user = [userField stringValue];
@@ -349,12 +372,6 @@ NSString *const SenderKey = @"Sender";
     
 }
 
--(void)setMessagePrice
-{
-    priceLabel.stringValue = 
-        [NSString stringWithFormat:NSLocalizedString(@"Price: %@", @"price"), 
-         [self messagePrice]];
-}
 
 -(NSString *)messagePrice
 {
@@ -461,6 +478,22 @@ NSString *const SenderKey = @"Sender";
         serviceStr = @"";
     }
     return serviceStr;
+}
+
+-(NSString *)normalizePhoneNumber:(NSString *)number
+{
+    NSString *normNumber = 
+    [[[[[number stringByReplacingOccurrencesOfString:@"+" 
+                withString:@"00"] 
+                stringByReplacingOccurrencesOfString:@" " 
+                withString:@""]
+                stringByReplacingOccurrencesOfString:@"(" 
+                withString:@""]
+                stringByReplacingOccurrencesOfString:@")" 
+                withString:@""]
+                stringByReplacingOccurrencesOfString:@"-" 
+                withString:@""];
+    return normNumber;
 }
 
 @end
