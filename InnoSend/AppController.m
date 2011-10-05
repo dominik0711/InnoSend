@@ -16,7 +16,7 @@ NSString *const SenderKey = @"Sender";
 @implementation AppController
 
 @synthesize progressIndicator, abPhone;
-@synthesize nameDoubleAction, target, selectedPhoneNumber;
+@synthesize nameDoubleAction, target;
 
 
 #pragma mark -

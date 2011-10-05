@@ -45,7 +45,6 @@ extern NSString *const SenderKey;
 @property (nonatomic, retain) NSString *abPhone;
 @property (nonatomic, assign) SEL nameDoubleAction;
 @property (nonatomic, assign) id target;
-@property (nonatomic, assign) NSString *selectedPhoneNumber;
 
 //@property (retain) NSSound *sound;
 
