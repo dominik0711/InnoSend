@@ -10,6 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Cocoa/Cocoa.h>
 #import <AddressBook/ABPeoplePickerView.h>
+#import "InnoSendAppDelegate.h"
 
 extern NSString *const ServiceKey;
 extern NSString *const UserNameKey;
@@ -18,6 +19,7 @@ extern NSString *const SenderKey;
 
 @interface AppController : NSObject
 {
+    InnoSendAppDelegate *appDelegate;
     IBOutlet NSWindow *mainWindow;
     IBOutlet ABPeoplePickerView *ppView;
 
@@ -28,6 +30,8 @@ extern NSString *const SenderKey;
     IBOutlet NSTextField *priceLabel;
     IBOutlet NSButton *sendButton;
     NSString *abPhone;
+    //MessageBox window
+    IBOutlet NSWindow *messageBox;
     //Preference sheet
     IBOutlet NSWindow *preferenceSheet;
     IBOutlet NSWindow *abPickerSheet;
@@ -59,6 +63,7 @@ extern NSString *const SenderKey;
 -(IBAction)openAccountPage:(id)sender;
 -(IBAction)newAccount:(id)sender;
 -(IBAction)changePassword:(id)sender;
+-(IBAction)showMessageBox:(id)sender;
 #pragma mark -
 #pragma mark Setter Methods
 -(void)setAccountCredit;

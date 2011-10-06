@@ -158,20 +158,11 @@ NSString *const SenderKey = @"Sender";
                                                 error:&error];
     NSString *retCodeStr = [[NSString alloc] initWithData:urlData 
                                                  encoding:NSUTF8StringEncoding]; 
+//    NSString *retCodeStr = @"100";
     [self.progressIndicator stopAnimation:self];
     int retCode = [retCodeStr intValue];
     NSString *infoTxt;
     NSString *image;
-    //Add send sound if send is successful
-    SystemSoundID soundID;
-    NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"Sent" ofType:@"aiff"];
-    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
-    if (retCode == 100) {
-        AudioServicesPlaySystemSound(soundID); 
-    } else {
-        NSBeep();
-    }
-    [soundFile release];
     switch (retCode) {
         case 100:
             infoTxt = NSLocalizedString(@"Successfully send message.", @"successfully send") ;
@@ -245,13 +236,36 @@ NSString *const SenderKey = @"Sender";
     
     [alertSheet setIcon:[NSImage imageNamed:image]];
     [alertSheet beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
-    
+    //Add send sound if send is successful
+    SystemSoundID soundID;
+    NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"Sent" ofType:@"aiff"];
+    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
     if (retCode == 100) {
+        AudioServicesPlaySystemSound(soundID);
+        appDelegate = [[NSApplication sharedApplication] 
+                       delegate];
+        
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        NSManagedObject *newMessage;
+        
+        newMessage = [NSEntityDescription insertNewObjectForEntityForName:@"MessageBox"   
+                                                   inManagedObjectContext:context];
+        
+        [newMessage setValue:input forKey:@"message"];
+        [newMessage setValue:address forKey:@"receiverNumber"];
+        [newMessage setValue:[NSDate date] forKey:@"sendDate"];
+        
+        NSError *error;
+        [context save:&error];
         [messageField setStringValue:@""];
+        [context release];
+        [newMessage release];
         //Refresh account
         [self setAccountCredit];
+        
+    } else {
+        NSBeep();
     }
-    return;
 }
 
 -(IBAction)closeApplication:(id)sender
@@ -310,6 +324,15 @@ NSString *const SenderKey = @"Sender";
 -(IBAction)changePassword:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[self changePasswordURL]]]; 
+}
+
+-(IBAction)showMessageBox:(id)sender
+{
+    if(![messageBox isVisible]) {
+        [messageBox makeKeyAndOrderFront:sender];
+    } else {
+        [messageBox close];
+    }
 }
 
 #pragma mark -
