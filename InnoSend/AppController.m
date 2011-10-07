@@ -242,27 +242,10 @@ NSString *const SenderKey = @"Sender";
     AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
     if (retCode == 100) {
         AudioServicesPlaySystemSound(soundID);
-        appDelegate = [[NSApplication sharedApplication] 
-                       delegate];
-        
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        NSManagedObject *newMessage;
-        
-        newMessage = [NSEntityDescription insertNewObjectForEntityForName:@"MessageBox"   
-                                                   inManagedObjectContext:context];
-        
-        [newMessage setValue:input forKey:@"message"];
-        [newMessage setValue:address forKey:@"receiverNumber"];
-        [newMessage setValue:[NSDate date] forKey:@"sendDate"];
-        
-        NSError *error;
-        [context save:&error];
+        [cdController saveMessage:input receiverNumber:address];
         [messageField setStringValue:@""];
-        [context release];
-        [newMessage release];
         //Refresh account
         [self setAccountCredit];
-        
     } else {
         NSBeep();
     }

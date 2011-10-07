@@ -20,6 +20,7 @@
 		B436119E140289F2000BDDFB /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = B436119D140289F2000BDDFB /* AppController.m */; };
 		B446E24C143E250100D0F325 /* InnoSend.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B446E24A143E250100D0F325 /* InnoSend.xcdatamodeld */; };
 		B44C2AE31416A5E40090B9FC /* Sent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B44C2AE21416A5E40090B9FC /* Sent.aiff */; };
+		B44DB2C5143F8A6A009CFFA7 /* CoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44DB2C4143F8A6A009CFFA7 /* CoreDataController.m */; };
 		B468C2EF1416C8610075CB0E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B468C2EE1416C8610075CB0E /* AudioToolbox.framework */; };
 		B49664E61422651E00215498 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49664E51422651E00215498 /* CoreData.framework */; };
 		B4F13DC614117C72005E907E /* sms.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4F13DC514117C72005E907E /* sms.icns */; };
@@ -48,6 +49,8 @@
 		B436119D140289F2000BDDFB /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; tabWidth = 4; };
 		B446E24B143E250100D0F325 /* InnoSend.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InnoSend.xcdatamodel; sourceTree = "<group>"; };
 		B44C2AE21416A5E40090B9FC /* Sent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Sent.aiff; sourceTree = "<group>"; };
+		B44DB2C3143F8A6A009CFFA7 /* CoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataController.h; sourceTree = "<group>"; };
+		B44DB2C4143F8A6A009CFFA7 /* CoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataController.m; sourceTree = "<group>"; };
 		B468C2EE1416C8610075CB0E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B49664E51422651E00215498 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B4A32D0A141D38F70057013C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 		B436118514028969000BDDFB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B44DB2C3143F8A6A009CFFA7 /* CoreDataController.h */,
+				B44DB2C4143F8A6A009CFFA7 /* CoreDataController.m */,
 				B436119C140289F2000BDDFB /* AppController.h */,
 				B436119D140289F2000BDDFB /* AppController.m */,
 				B436119114028969000BDDFB /* InnoSendAppDelegate.h */,
@@ -238,6 +243,7 @@
 				B436119314028969000BDDFB /* InnoSendAppDelegate.m in Sources */,
 				B436119E140289F2000BDDFB /* AppController.m in Sources */,
 				B446E24C143E250100D0F325 /* InnoSend.xcdatamodeld in Sources */,
+				B44DB2C5143F8A6A009CFFA7 /* CoreDataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

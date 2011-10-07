@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Cocoa/Cocoa.h>
 #import <AddressBook/ABPeoplePickerView.h>
-#import "InnoSendAppDelegate.h"
+#import "CoreDataController.h"
 
 extern NSString *const ServiceKey;
 extern NSString *const UserNameKey;
@@ -19,9 +19,9 @@ extern NSString *const SenderKey;
 
 @interface AppController : NSObject
 {
-    InnoSendAppDelegate *appDelegate;
     IBOutlet NSWindow *mainWindow;
     IBOutlet ABPeoplePickerView *ppView;
+    IBOutlet CoreDataController *cdController;
 
     IBOutlet NSTextField *addressField;
     IBOutlet NSTextField *messageField;
